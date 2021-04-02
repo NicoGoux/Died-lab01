@@ -69,14 +69,4 @@ public class Recta {
 			return false;
 		}
 	}
-	
-	public boolean compararNuevaRecta (Punto p) {
-		Recta r1 = new Recta (p,this.p2);
-		if (r1.pendiente()==this.pendiente()) {
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
 }
