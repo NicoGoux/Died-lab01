@@ -89,5 +89,6 @@ public class Temperatura {
 				this.grados -= temp.asFahrenheit();
 			}
 		}
+		//prueba para git
 	}
 }
