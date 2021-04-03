@@ -17,13 +17,11 @@ public class Temperatura {
 	public String toString() {
 		String retornoGrados = this.grados+"";
 		if (this.escala == Escala.CELCIUS) {
-			retornoGrados.concat(" °C");
+			return retornoGrados.concat(" °C");
 		}
 		else {
-			retornoGrados.concat(" °F");
+			return retornoGrados.concat(" °F");
 		}
-		
-		return retornoGrados;
 	}
 	
 	public double asCelcius() {
