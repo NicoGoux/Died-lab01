@@ -4,8 +4,6 @@ import died.lab01.problema02.*;
 
 public class Registro {
 	
-	private int indiceMaximo=0;
-	
 	private String ciudad;
 	private Temperatura[] historico;
 	
@@ -45,13 +43,14 @@ public class Registro {
 				this.historico[i] = t;
 				return;
 			}
-			this.indiceMaximo++;
 		}
+		System.out.println("Se excedio el tamaño del registro, no pudo registrarse la temperatura");
+		return;
 	}
 	
 	public double mediaAsCelcius() {
 		double totalTempCelcius = 0.0;
-		int i = 1;
+		int i = 0;
 		for (Temperatura unaTemp : this.historico) {
 			if (unaTemp != null) {
 				totalTempCelcius+=unaTemp.asCelcius();
@@ -86,12 +85,12 @@ public class Registro {
 	public Temperatura temperaturaMaxima() {
 		Temperatura maxima = this.historico[0];
 		Registro aux = new Registro();
-		aux.actualizarRegistroAux(this.historico);
+		aux.actualizarRegistroAux(this.historico); 
 		return aux.esMaximo(maxima);
 	}
 	
 	private Temperatura esMaximo(Temperatura maxAux) {
-		if (this.historico==null) {
+		if (this.historico==null || this.historico[0]==null) {
 			return maxAux;
 		}
 		
@@ -102,14 +101,15 @@ public class Registro {
 			}
 			
 			else {
+				Temperatura nuevaMaxima = this.historico[0];
 				this.actualizarRegistroAux(this.historico);
-				return this.esMaximo(this.historico[0]);
+				return this.esMaximo(nuevaMaxima);
 			}
 		}
 	}
 	
 	private void actualizarRegistroAux(Temperatura[] t) {
-		if (t.length==1 || t[0]==null) {
+		if (t.length==1) {
 			this.historico=null;
 		}
 		else {
@@ -118,6 +118,4 @@ public class Registro {
 			this.historico = auxArray;
 		}
 	}
-	
-	
 }
